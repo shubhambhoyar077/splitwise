@@ -1,9 +1,5 @@
 .dashboard-wrapper
-  aside.side-bar-area
-    .friends-list
-      p.friends-list-header FRIENDS
-      a.friend-name anbu
-      a.friend-name barath
+  = render "static/shared/aside_bar", friends: @friends
   .main-area
     .top-bar
       h1.top-bar-title Dashboard
@@ -58,3 +54,4 @@
       .modal-footer
         button.btn.btn-secondary data-bs-dismiss="modal" type="button"  Close
         button.btn.btn-primary type="button"  Save changes
+= render "static/shared/not_friend_list"
