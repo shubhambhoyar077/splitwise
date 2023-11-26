@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  payer: one
+  total_amount: 
+  description: MyString
+  date: 2023-11-26
+
+two:
+  payer: two
+  total_amount: 
+  description: MyString
+  date: 2023-11-26
