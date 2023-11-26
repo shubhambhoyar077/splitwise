@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  recipient: one
+  expense: one
+  amount: 
+  recipient_paid: false
+
+two:
+  recipient: two
+  expense: two
+  amount: 
+  recipient_paid: false
