@@ -1,0 +1,11 @@
+#friendModal.modal.fade aria-hidden="true" aria-labelledby="friendModalLabel" tabindex="-1" 
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#friendModalLabel.modal-title Add friend
+        button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button" 
+      .modal-body
+        .friends-list
+          p.friends-list-header ADD FRIENDS
+          - @not_friends.each do |not_friend|
+            = link_to not_friend.name, friends_path(friend_id: not_friend.id), method: :post, class: 'friend-name'
