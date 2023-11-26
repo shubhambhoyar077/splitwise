@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
  has_many :friends, foreign_key: 'friend_id'
+ has_many :expenses, foreign_key: 'payer_id'
+ has_many :expense_splits, foreign_key: 'recipient_id'
 
  def all_friends
   friend_i_added = Friend.where(user_id: id).pluck(:friend_id)
