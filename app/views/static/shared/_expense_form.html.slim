@@ -1,0 +1,32 @@
+= simple_form_for expense do |f|
+  .form-group
+    = f.association :payer, collection: [current_user]+@friends, label: 'Paid by', include_blank: false, input_html: { class: 'form-select form-control' }
+
+  .form-group
+    = f.label :date, 'Date'
+    = f.input_field :date, as: :date, html5: true, class: 'form-control'
+
+  .form-group
+    = f.label :description, 'Description'
+    = f.input_field :description, class: 'form-control'
+
+  .form-group
+    = f.label :total_amount, 'Total Amount'
+    = f.input_field :total_amount, class: 'form-control'
+
+  h3.detail-title Add Split recipient
+  .form-group
+  label for="equal_split" Equal
+  input type="checkbox" name="equal_split" id="equal_split"
+  label for="fixed_split" Fixed
+  input type="checkbox" name="fixed_split" id="fixed_split"
+  h3 Tasks
+  #expense_splits
+    = f.simple_fields_for :expense_splits do |f|
+      = render 'static/expense_split_fields', f:f
+    .links
+      = link_to_add_association 'add task', f, :expense_splits
+      / button#addPartialBtn.btn.btn-secondary type="button" Add Partial
+
+  .form-group
+    = f.button :submit, 'Save changes', class: 'btn btn-primary'
