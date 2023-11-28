@@ -3,6 +3,5 @@ class ExpenseSplit < ApplicationRecord
   belongs_to :expense
 
   validates :recipient_id, presence: true
-  validates :expense_id, presence: true
   validates :amount, presence: true, numericality: { greater_than: 0 }
 end
