@@ -12,14 +12,14 @@
 
   .form-group
     = f.label :total_amount, 'Total Amount'
-    = f.input_field :total_amount, class: 'form-control'
+    = f.input_field :total_amount, class: 'form-control', id: 'total-amount'
 
   h3.detail-title Add Split recipient
   .form-group
-  label for="equal_split" Equal
-  input type="checkbox" name="equal_split" id="equal_split"
-  label for="fixed_split" Fixed
-  input type="checkbox" name="fixed_split" id="fixed_split"
+  label for="equal-checkbox" Equal
+  input type="checkbox" name="equal_split" id="equal-checkbox"
+  label for="fixed-checkbox" Fixed
+  input type="checkbox" name="fixed_split" id="fixed-checkbox"
   h3 Tasks
   #expense_splits
     = f.simple_fields_for :expense_splits do |f|
