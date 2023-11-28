@@ -5,7 +5,7 @@ class ExpensesController < ApplicationController
     if @expense.save
       redirect_to root_path, notice: 'Expense added successfully'
     else
-      redirect_to root_path, notice: 'Expense not added'
+      redirect_to root_path, alert: 'Expense not added'
     end
   end
 
