@@ -16,6 +16,7 @@ import 'bootstrap/dist/js/bootstrap';
 require('jgrowl');
 require('jquery');
 require('@nathanvda/cocoon');
+require('../expense_form');
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
