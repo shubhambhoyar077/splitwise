@@ -16,15 +16,15 @@
 
   h3.detail-title Add Split recipient
   .form-group
-  label for="equal-checkbox" Equal
-  input type="checkbox" name="equal_split" id="equal-checkbox"
-  label for="fixed-checkbox" Fixed
-  input type="checkbox" name="fixed_split" id="fixed-checkbox"
-  #expense_splits
-    = f.simple_fields_for :expense_splits do |f|
-      = render 'static/expense_split_fields', f:f
-    .links
-      = link_to_add_association 'add recipient', f, :expense_splits, class: 'btn btn-primary mb-2 cocoon-add-btn'
+    label.form-check-label for="equal-checkbox" Equal
+    input.form-check-input type="checkbox" name="equal_split" id="equal-checkbox"
+    label.form-check-label for="fixed-checkbox" Fixed
+    input.form-check-input type="checkbox" name="fixed_split" id="fixed-checkbox"
+    #expense_splits
+      = f.simple_fields_for :expense_splits do |f|
+        = render 'static/expense_split_fields', f:f
+      .links
+        = link_to_add_association 'add recipient', f, :expense_splits, class: 'btn btn-primary mb-2 cocoon-add-btn'
 
   .form-group
     = f.button :submit, 'Save changes', class: 'btn btn-primary'
