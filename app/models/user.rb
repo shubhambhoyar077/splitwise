@@ -27,10 +27,6 @@ def balance_detail
 
   temp_you_owe_list.each do |payer|
     recipient = you_are_owed_list.find { |hash| hash[:recipient].id == payer[:payer].id }
-    puts "---------"
-    puts payer
-    puts recipient
-    puts "---------"
     if recipient
       if payer[:amount] < recipient[:amount]
         recipient[:amount] -= payer[:amount]
