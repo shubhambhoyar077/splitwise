@@ -8,7 +8,7 @@ class User < ApplicationRecord
  has_many :expenses, foreign_key: 'payer_id'
  has_many :expense_splits, foreign_key: 'recipient_id'
 
- def all_friends
+def all_friends
   friend_i_added = Friend.where(user_id: id).pluck(:friend_id)
   friend_they_added_me = Friend.where(friend_id: id).pluck(:user_id)
   ids = friend_i_added + friend_they_added_me
