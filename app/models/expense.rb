@@ -7,4 +7,8 @@ class Expense < ApplicationRecord
   validates :total_amount, presence: true, numericality: { greater_than: 0 }
   validates :description, presence: true, length: { maximum: 255 }
   validates :date, presence: true
+
+  def total_expense_splits
+    expense_splits.length
+  end
 end
