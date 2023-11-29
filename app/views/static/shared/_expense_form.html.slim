@@ -25,8 +25,7 @@
     = f.simple_fields_for :expense_splits do |f|
       = render 'static/expense_split_fields', f:f
     .links
-      = link_to_add_association 'add task', f, :expense_splits
-      / button#addPartialBtn.btn.btn-secondary type="button" Add Partial
+      = link_to_add_association 'add recipient', f, :expense_splits
 
   .form-group
     = f.button :submit, 'Save changes', class: 'btn btn-primary'
