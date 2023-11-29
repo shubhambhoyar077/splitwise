@@ -20,12 +20,11 @@
   input type="checkbox" name="equal_split" id="equal-checkbox"
   label for="fixed-checkbox" Fixed
   input type="checkbox" name="fixed_split" id="fixed-checkbox"
-  h3 Tasks
   #expense_splits
     = f.simple_fields_for :expense_splits do |f|
       = render 'static/expense_split_fields', f:f
     .links
-      = link_to_add_association 'add recipient', f, :expense_splits
+      = link_to_add_association 'add recipient', f, :expense_splits, class: 'btn btn-primary mb-2 cocoon-add-btn'
 
   .form-group
     = f.button :submit, 'Save changes', class: 'btn btn-primary'

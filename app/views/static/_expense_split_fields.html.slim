@@ -6,4 +6,4 @@
     .col
       .form-outline
         = f.input_field :amount, class: 'form-control split-amount', readonly: true, value: 0
-  = link_to_remove_association "remove recipient", f
+  = link_to_remove_association "remove recipient", f, class: "btn btn-secondary mb-2 cocoon-remove-btn"

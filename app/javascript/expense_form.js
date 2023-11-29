@@ -32,7 +32,6 @@ document.addEventListener('turbolinks:load', function () {
 
     totalAmountInput.addEventListener('input', function () {
       totalAmountValue = parseFloat(totalAmountInput.value) || 0;
-      console.log('Total Amount changed to:', totalAmountValue);
       updateDynamicAmountInputs();
     });
   }
