@@ -53,6 +53,7 @@ def balance_detail
   balance_detail
 end
 
+private
 
 def you_owe
   you_owe_list = []
