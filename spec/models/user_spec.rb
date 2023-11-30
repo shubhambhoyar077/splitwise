@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe User, type: :model do
-  # subject { User.new(name: 'Tom', photo: 'https://unsplash.com/photos', bio: 'Teacher from Mexico.') }
 
-  # before { subject.save }
   it 'Valid user' do
     user = Fabricate(:user)
     expect(user).to be_valid
