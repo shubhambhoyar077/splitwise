@@ -8,6 +8,8 @@ class User < ApplicationRecord
  has_many :expenses, foreign_key: 'payer_id'
  has_many :expense_splits, foreign_key: 'recipient_id'
 
+ validates :name, presence: true, length: { maximum: 255 }
+
 def all_friends
   friend_i_added = Friend.where(user_id: id).pluck(:friend_id)
   friend_they_added_me = Friend.where(friend_id: id).pluck(:user_id)
@@ -19,6 +21,7 @@ def not_friends
   User.where.not(id: id) - all_friends
 end
 
+#For calculating balace details and for getting you_owe and you_are_owed list for current user
 def balance_detail
   balance_detail = {}
   you_owe_list = you_owe
