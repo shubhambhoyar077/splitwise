@@ -1,9 +1,5 @@
 .dashboard-wrapper
-  aside.side-bar-area
-    .friends-list
-      p.friends-list-header FRIENDS
-      a.friend-name anbu
-      a.friend-name barath
+  = render "static/shared/aside_bar", friends: @friends
   .main-area
     .top-bar
       h1.top-bar-title Dashboard
@@ -13,40 +9,32 @@
 
     .dashboard-balances
       .balances-bar
-        .balance-block
-          p total balance
-          p + $11.50
-        .balance-block
-          p you owe
-          p $0.00
-        .balance-block
-          p you are owed
-          p $11.50
+          .balance-block
+            p total balance
+            p $#{current_user.balance_detail[:balance]}
+          .balance-block
+            p you owe
+            p $#{current_user.balance_detail[:total_you_owe]}
+          .balance-block
+            p you are owed
+            p $#{current_user.balance_detail[:total_you_are_owed]}
       .dashboard-detail
         .detail-block
-          h2.detail-title you owe
-          .user-detail
-            img.user-img alt="profile" src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" /
-            .user-info
-              p anbu
-              p owes you $11.50
-          .user-detail
-            img.user-img alt="profile" src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" /
-            .user-info
-              p anbu
-              p owes you $11.50
+            h2.detail-title you owe
+            - current_user.balance_detail[:you_owe].each do |expense_split|
+              .user-detail
+                img.user-img alt="profile" src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" /
+                .user-info
+                  p #{expense_split[:payer].name}
+                  p you owe $#{expense_split[:amount]}
         .detail-block
           h2.detail-title you are owed
-          .user-detail
-            img.user-img alt="profile" src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" /
-            .user-info
-              p anbu
-              p owes you $11.50
-          .user-detail
-            img.user-img alt="profile" src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" /
-            .user-info
-              p anbu
-              p owes you $11.50
+          - current_user.balance_detail[:you_are_owed].each do |expense_split|
+            .user-detail
+              img.user-img alt="profile" src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" /
+              .user-info
+                p #{expense_split[:recipient].name}
+                p owes you $#{expense_split[:amount]}
 #expenseModal.modal.fade aria-hidden="true" aria-labelledby="expenseModalLabel" tabindex="-1" 
   .modal-dialog
     .modal-content
@@ -54,7 +42,7 @@
         h5#expenseModalLabel.modal-title Add an expense
         button.btn-close aria-label="Close" data-bs-dismiss="modal" type="button" 
       .modal-body
-        | Fields to be added
+        = render "static/shared/expense_form", expense: @expense
       .modal-footer
         button.btn.btn-secondary data-bs-dismiss="modal" type="button"  Close
-        button.btn.btn-primary type="button"  Save changes
+= render "static/shared/not_friend_list"

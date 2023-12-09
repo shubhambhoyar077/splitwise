@@ -1,0 +1,9 @@
+.nested-fields
+  .row.mb-4
+    .col
+      .form-outline
+        = f.input_field :recipient_id, collection: [current_user] + @friends, include_blank: "Select recipient", class: 'form-select form-control', placeholder: 'Recipient'
+    .col
+      .form-outline
+        = f.input_field :amount, class: 'form-control split-amount', readonly: true, value: 0
+  = link_to_remove_association "remove recipient", f, class: "btn btn-secondary mb-2 cocoon-remove-btn"

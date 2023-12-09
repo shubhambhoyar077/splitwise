@@ -1,49 +1,33 @@
 .dashboard-wrapper
   aside.side-bar-area
-    .friends-list
-      p.friends-list-header FRIENDS
-      a.friend-name anbu
-      a.friend-name barath
+    = render "static/shared/aside_bar", friends: @friends
   .main-area
     .top-bar
-      h1.top-bar-title Dashboard
-      .top-bar-actions
-        button.btn.btn-primary type="button"  Add an expense
-        button.btn.btn-secondary type="button"  Settle up
+      h1.top-bar-title #{@user.name}
     .expenses-list
-      .expense-item
-        .item-lhs
-          p SEP 30
-          p Hello
-        .item-rhs
-          .you-details
-            p you paid
-            p $23.00
-          .you-details
-            p you lent anbu
-            p $11.50
-        button.remove-btn ❌
-      .expense-item
-        .item-lhs
-          p SEP 30
-          p Hello
-        .item-rhs
-          .you-details
-            p you paid
-            p $23.00
-          .you-details
-            p you lent anbu
-            p $11.50
-        button.remove-btn ❌
-      .expense-item
-        .item-lhs
-          p SEP 30
-          p Hello
-        .item-rhs
-          .you-details
-            p you paid
-            p $23.00
-          .you-details
-            p you lent anbu
-            p $11.50
-        button.remove-btn ❌
+      - @expense_splits.each do |expense_split|
+        .expense-item
+          .item-lhs
+            p #{expense_split.expense.date.strftime('%b %d')}
+            p #{expense_split.expense.description}
+          .item-rhs
+            - if expense_split.expense.payer == @user 
+              .you-details
+                p you paid
+                p $#{expense_split.expense.total_amount}
+              - if expense_split.expense.total_expense_splits == 2
+                .you-details
+                  p you lent #{expense_split.expense.expense_splits[1].recipient.name}
+                  p $#{expense_split.expense.expense_splits[1].amount}
+              - else 
+                .you-details
+                  p you lent
+                  p $#{expense_split.expense.total_amount - expense_split.amount}
+            - else
+              .you-details
+                p #{expense_split.expense.payer.name} paid
+                p $#{expense_split.expense.total_amount}
+              .you-details
+                p #{expense_split.expense.payer.name} lent you
+                p $#{expense_split.amount}
+          button.remove-btn ❌

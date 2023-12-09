@@ -34,7 +34,7 @@
   padding: 3px 8px 2px 8px;
   text-decoration: none;
   color: inherit;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
   cursor: pointer;
 }
 
@@ -82,7 +82,7 @@
   text-align: center;
 }
 
-.balance-block  p {
+.balance-block p {
   font-size: 13px;
   line-height: 16px;
   margin-bottom: 0;
@@ -133,7 +133,7 @@
   display: flex;
   justify-content: space-between;
   padding: 8px 16px;
-  transition: all .2s  linear;
+  transition: all 0.2s linear;
 }
 
 .expenses-list .expense-item:hover {
@@ -190,11 +190,13 @@
   line-height: 15px;
   color: #aaa;
   margin: 0;
+  min-width: 200px;
 }
 
 .you-details p:nth-child(2) {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
+  min-width: 200px;
 }
 /* Custom dashboard styles ends */
