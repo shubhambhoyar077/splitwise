@@ -9,3 +9,7 @@
 
 ## Live Link
 - [Splitwise Clone](https://splitwise-7433.onrender.com/)
+
+## Future Features
+- Settle up Bills.
+- Improve Design
